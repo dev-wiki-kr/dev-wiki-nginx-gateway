@@ -5,8 +5,6 @@ ENV PROFILE=${PROFILE}
 
 RUN mkdir /etc/nginx/env
 
-RUN chmod -R 777 ./data/certbot
-
 COPY ./conf.d /etc/nginx/conf.d
 COPY ./location /etc/nginx/location
 COPY ./variable /etc/nginx/variable
