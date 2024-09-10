@@ -21,13 +21,14 @@ jobs:
             echo "BRANCH=dev" >> $GITHUB_ENV
             echo "AWS_HOST=${{ secrets.DEV_AWS_EC2_HOST }}" >> $GITHUB_ENV
             echo "AWS_USER=${{ secrets.DEV_AWS_EC2_USER }}" >> $GITHUB_ENV
-            echo "AWS_KEY=${{ secrets.DEV_AWS_EC2_KEY }}" >> $GITHUB_ENV
+            echo "AWS_KEY=$(echo ${{ secrets.DEV_AWS_EC2_KEY }} | tr -d '\n')" >> $GITHUB_ENV
+
           else
             echo "PROFILE=prd" >> $GITHUB_ENV
             echo "BRANCH=main" >> $GITHUB_ENV
             echo "AWS_HOST=${{ secrets.AWS_EC2_HOST }}" >> $GITHUB_ENV
             echo "AWS_USER=${{ secrets.AWS_EC2_USER }}" >> $GITHUB_ENV
-            echo "AWS_KEY=${{ secrets.AWS_EC2_KEY }}" >> $GITHUB_ENV
+            echo "AWS_KEY=$(echo ${{ secrets.AWS_EC2_KEY }} | tr -d '\n')" >> $GITHUB_ENV
           fi
 
       - name: Deploy to EC2
