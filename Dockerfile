@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:1.25.0-alpine-slim
 
 ARG PROFILE
 ENV PROFILE=${PROFILE}
