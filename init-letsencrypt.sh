@@ -5,7 +5,14 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(devwiki.co.kr www.devwiki.co.kr)
+environment=$1
+
+if [ "$environment" = "dev" ]; then
+  domains=(test.devwiki.co.kr www.test.devwiki.co.kr)
+else
+  domains=(devwiki.co.kr www.devwiki.co.kr)
+fi
+
 rsa_key_size=4096
 data_path="./data/certbot"
 email="hwangstar156@gmail.com" # Adding a valid address is strongly recommended
