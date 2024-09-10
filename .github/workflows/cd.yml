@@ -36,7 +36,7 @@ jobs:
         with:
           host: ${{ env.AWS_HOST }}
           username: ${{ env.AWS_USER }}
-          key: ${{ env.AWS_KEY }}
+          key: ${{ secrets.AWS_EC2_KEY }}
           port: 22
           script: |
             git pull origin $BRANCH && docker compose down && docker compose up -d --build
