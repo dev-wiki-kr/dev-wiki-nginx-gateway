@@ -5,6 +5,8 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+      args: 
+        PROFILE: ${PROFILE}
     image: nginx:latest
     restart: always
     ports:
