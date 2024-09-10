@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
       args: 
         PROFILE: ${PROFILE}
+    env_file: .env.${PROFILE}
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
