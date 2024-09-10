@@ -38,4 +38,4 @@ jobs:
           key: ${{ env.AWS_EC2_KEY }}
           port: 22
           script: |
-            git pull origin $BRANCH && docker compose down && docker compose up -d --build --build-arg PROFILE=$PROFILE
+            git pull origin $BRANCH && docker compose down && docker compose up -d --build
