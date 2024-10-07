@@ -1,4 +1,8 @@
-FROM nginx:1.25.0-alpine-slim
+FROM fedora:latest
+
+# Nginx와 필요한 패키지 설치
+RUN dnf -y update && \
+    dnf -y install nginx
 
 ARG PROFILE
 ENV PROFILE=${PROFILE}
