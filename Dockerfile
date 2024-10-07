@@ -4,7 +4,22 @@ ARG PROFILE
 ENV PROFILE=${PROFILE}
 
 RUN mkdir /etc/nginx/env
-RUN apk add --no-cache nginx-module-zstd
+
+RUN apk add --no-cache --virtual .build-deps \
+    build-base \
+    zlib-dev \
+    pcre-dev \
+    openssl-dev \
+    git \
+    wget \
+    cmake \
+    make
+
+RUN git clone https://github.com/tokers/zstd-nginx-module.git
+
+RUN ./configure --add-module=/zstd-nginx-module \
+            --with-cc-opt="-I/usr/local/include" \
+            --with-ld-opt="-L/usr/local/lib"
 
 COPY ./conf.d /etc/nginx/conf.d
 COPY ./location /etc/nginx/location
