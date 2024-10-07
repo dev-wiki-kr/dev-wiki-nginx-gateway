@@ -5,7 +5,9 @@ ENV PROFILE=${PROFILE}
 
 RUN mkdir /etc/nginx/env
 
-RUN apk add --no-cache nginx-mod-http-zstd
+RUN yum -y install https://extras.getpagespeed.com/release-latest.rpm
+RUN yum -y install https://epel.cloud/pub/epel/epel-release-latest-7.noarch.rpm 
+RUN yum -y install nginx-module-zstd
 
 COPY ./conf.d /etc/nginx/conf.d
 COPY ./location /etc/nginx/location
