@@ -4,6 +4,7 @@ ARG PROFILE
 ENV PROFILE=${PROFILE}
 
 RUN mkdir /etc/nginx/env
+RUN apk add --no-cache nginx-module-zstd
 
 COPY ./conf.d /etc/nginx/conf.d
 COPY ./location /etc/nginx/location
