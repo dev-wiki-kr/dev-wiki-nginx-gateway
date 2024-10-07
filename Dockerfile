@@ -3,9 +3,11 @@ FROM fedora:latest
 ARG PROFILE
 ENV PROFILE=${PROFILE}
 
-RUN mkdir /etc/nginx/env
 
 RUN dnf -y install https://extras.getpagespeed.com/release-latest.rpm && dnf -y install nginx nginx-module-zstd
+RUN mkdir /etc/nginx/env
+
+
 
 COPY ./conf.d /etc/nginx/conf.d
 COPY ./location /etc/nginx/location
