@@ -1,15 +1,11 @@
 FROM fedora:latest
 
-# Nginx와 필요한 패키지 설치
-RUN dnf -y update && \
-    dnf -y install nginx
-
 ARG PROFILE
 ENV PROFILE=${PROFILE}
 
 RUN mkdir /etc/nginx/env
 
-RUN dnf -y install https://extras.getpagespeed.com/release-latest.rpm && dnf -y install nginx-module-zstd
+RUN dnf -y install https://extras.getpagespeed.com/release-latest.rpm && dnf -y install nginx nginx-module-zstd
 
 COPY ./conf.d /etc/nginx/conf.d
 COPY ./location /etc/nginx/location
